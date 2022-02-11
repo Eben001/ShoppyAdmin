@@ -64,7 +64,7 @@
     <dimen name="settings_lbl_addresses_margin">3dp</dimen>
     <dimen name="settings_lbl_addresses_textSize">18sp</dimen>
     <dimen name="settings_button_marginStartEnd">50dp</dimen>
-    <dimen name="settings_button_marginTopBottom">16dp</dimen>
+    <dimen name="settings_button_marginTopBottom">100dp</dimen>
 
 
     <dimen name="add_product_header_image_height">250dp</dimen>
