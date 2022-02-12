@@ -167,7 +167,6 @@ class FirestoreClass {
     //Gets the product list for a single user from Firestore
     fun getProductsList(fragment: Fragment) {
         mFirestore.collection(Constants.PRODUCTS)
-            .whereEqualTo(Constants.USER_ID, getCurrentUserId())
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products List", document.documents.toString())

@@ -9,8 +9,6 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.ebenezer.gana.shoppyadmin.R
 import com.ebenezer.gana.shoppyadmin.databinding.ActivityLoginBinding
-import com.ebenezer.gana.shoppyadmin.firestore.FirestoreClass
-import com.ebenezer.gana.shoppyadmin.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
