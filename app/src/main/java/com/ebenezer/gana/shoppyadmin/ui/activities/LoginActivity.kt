@@ -99,11 +99,16 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                     // If the registration is successfully done
                     if (task.isSuccessful) {
-                        FirestoreClass().getUserDetails(this@LoginActivity)
+                        //FirestoreClass().getUserDetails(this@LoginActivity)
 
-                        // signing the user out after registration and sending to the login activity
-                        //FirebaseAuth.getInstance().signOut()
-                        //finish()
+                        // Hide the progress dialog.
+                        hideProgressDialog()
+
+                        //Redirect the user to the Main Screen after log in
+                        val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+
                     } else {
                         hideProgressDialog()
                         // If the registration is not successful then show error message
@@ -114,20 +119,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
         }
-
-    }
-
-    /**
-     * A function to notify user that logged in success and get the user details from the FireStore database after authentication.
-     */
-    fun userLoggedInSuccess(user: User) {
-        // Hide the progress dialog.
-        hideProgressDialog()
-
-        //Redirect the user to the Main Screen after log in
-        val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
 
     }
 

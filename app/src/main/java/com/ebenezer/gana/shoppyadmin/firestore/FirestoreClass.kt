@@ -44,49 +44,7 @@ class FirestoreClass {
         return currentUserID
     }
 
-    /**
-     * A function to get the user id of current logged user.
-     */
-    fun getUserDetails(activity: Activity) {
 
-        // Here we pass the collection name from which we wants the data.
-        mFirestore.collection(Constants.USERS)
-            // The document id to get the Fields of user.
-            .document(getCurrentUserId())
-            .get()
-            .addOnSuccessListener { document ->
-
-                Log.i(activity.javaClass.simpleName, document.toString())
-
-                // Here we have received the document snapshot which is converted into the User Data model object.
-                val user = document.toObject(User::class.java)!!
-
-
-                when (activity) {
-                    //check the type of activity
-                    is LoginActivity -> {
-                        // Call a function of base activity for transferring the result to it.
-                        activity.userLoggedInSuccess(user)
-                    }
-                }
-
-            }
-
-            .addOnFailureListener { e ->
-                // Hide the progress dialog if there is any error. And print the error in log.
-                when (activity) {
-                    is LoginActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                }
-
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error while getting user details.",
-                    e
-                )
-            }
-    }
     // A function to upload the image to the cloud storage.
 
     fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String) {
